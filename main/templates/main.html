@@ -1,3 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a 
+    href="#"
+    class="navbar-brand.mb-0 h1">
+      <img 
+      class="d-inline-block align-top"
+      src="https://w1.pngwing.com/pngs/536/984/png-transparent-book-logo-book-design-childrens-literature-cartoon-page-text-orange-line.png"
+      width="30" height="30" />
+      Navbar
+  </a>
+  <div class="collapse navbar-collapse" 
+  id="navbarNav">
+  <ul class="navbar-nav">
+    <li class="nav-tem active">
+      <a href="#" class="nav-link">
+        Home
+      </a>
+    </li>
+    <li class="nav-tem active">
+      <a href="#" class="nav-link">
+        Add
+      </a>
+    </li>
+    <li class="nav-tem active">
+      <a href="#" class="nav-link">
+        Edit
+      </a>
+    </li>
+  </ul>
+  </div>
+</nav>
+
+
 {% extends 'base.html' %} {% block content %}
 <h1>Book Tracker Page</h1>
 
@@ -22,6 +55,18 @@
     <td>{{book.page}}</td>
     <td>{{book.description}}</td>
     <td>{{book.date_added}}</td>
+    <td>
+      <a href="{% url 'main:edit_book' book.pk %}">
+          <button>
+              Edit
+          </button>
+      </a>
+      <a href="{% url 'main:delete_book' book.pk %}">
+        <button>
+            Delete
+        </button>
+      </a>
+  </td>
   </tr>
   {% endfor %}
 </table>
@@ -29,11 +74,11 @@
 <br />
 
 <a href="{% url 'main:create_book' %}">
-  <button>Add New Book</button>
+  <button class="btn btn-info">Add New Book</button>
 </a>
 
 <a href="{% url 'main:logout' %}">
-  <button>Logout</button>
+  <button class="btn btn-danger">Logout</button>
   <h5>Sesi terakhir login: {{ last_login }}</h5>
 </a>
 
